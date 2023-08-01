@@ -1,0 +1,11 @@
+USE [fiyistack_MarshallStore]
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+--Last modification on: 31/07/2023 14:25:40
+
+CREATE TABLE [dbo].[MarshallStore.ShoppingCart] (
+    [ShoppingCartId] [int] IDENTITY(1,1) NOT NULL,
+    CONSTRAINT [PK_MarshallStoreShoppingCart] PRIMARY KEY CLUSTERED ([ShoppingCartId] ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY])
+ON[PRIMARY]

@@ -1,0 +1,10 @@
+{
+    "PurchaseProductId" : 1,
+    "Active" : true,
+    "DateTimeCreation" : "1753-01-01T00:00:00.001Z",
+    "DateTimeLastModification" : "1753-01-01T00:00:00.001Z",
+    "UserCreationId" : 1,
+    "UserLastModificationId" : 1,
+    "PurchaseId" : 1,
+    "ProductId" : 1
+}

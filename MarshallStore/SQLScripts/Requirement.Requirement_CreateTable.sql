@@ -1,0 +1,11 @@
+USE [fiyistack_MarshallStore]
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+--Last modification on: 24/12/2022 6:41:02
+
+CREATE TABLE [dbo].[Requirement.Requirement] (
+    [RequirementId] [int] IDENTITY(1,1) NOT NULL,
+    CONSTRAINT [PK_RequirementRequirement] PRIMARY KEY CLUSTERED ([RequirementId] ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY])
+ON[PRIMARY]

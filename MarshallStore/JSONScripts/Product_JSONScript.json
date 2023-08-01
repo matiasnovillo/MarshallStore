@@ -1,0 +1,16 @@
+{
+    "ProductId" : 1,
+    "Active" : true,
+    "DateTimeCreation" : "1753-01-01T00:00:00.001Z",
+    "DateTimeLastModification" : "1753-01-01T00:00:00.001Z",
+    "UserCreationId" : 1,
+    "UserLastModificationId" : 1,
+    "ProductCategoryId" : 1,
+    "Producer" : "PutProducer",
+    "Model" : "PutModel",
+    "Price" : 3.14,
+    "Description" : "PutDescription",
+    "Image1" : "PutImage1",
+    "Image2" : "PutImage2",
+    "Image3" : "PutImage3"
+}

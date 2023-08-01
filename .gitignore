@@ -1,0 +1,6 @@
+/.vs
+/MarshallStore/obj
+/MarshallStore/bin
+/MarshallStore/node_modules
+/MarshallStore/wwwroot/Downloads
+/MarshallStore/wwwroot/Uploads

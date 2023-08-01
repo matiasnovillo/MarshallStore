@@ -1,0 +1,584 @@
+@page
+@using MarshallStore.Areas.Examples.Models
+@model MarshallStore.Areas.Examples.Pages.ExampleNonQueryPageModel
+@{
+    Layout = "_LayoutDashboard";
+
+    string NonQueryText = "";
+    string NonQueryIcon = "";
+
+    int ExampleId;
+    bool Boolean;
+    DateTime DateTime;
+    decimal Decimal;
+    int Integer;
+    string TextBasic;
+    string TextEmail;
+    string TextFile;
+    string TextPassword;
+    string TextPhoneNumber;
+    string TextTag;
+    string TextTextArea;
+    string TextTextEditor;
+    string TextURL;
+    int ForeignKeyDropDown;
+    int ForeignKeyOption;
+    string TextHexColour;
+    TimeSpan Time;
+    
+
+    if(HttpContext.Request.QueryString.Value.Contains("?ExampleId=0"))
+    {
+        NonQueryText = "Add";
+        NonQueryIcon = "fas fa-plus";
+
+        ExampleId = 0;
+        Boolean = false;
+        DateTime = DateTime.Now;
+        Decimal = 5.000000M;
+        Integer = 5;
+        TextBasic = "";
+        TextEmail = "";
+        TextFile = "";
+        TextPassword = "";
+        TextPhoneNumber = "";
+        TextTag = "";
+        TextTextArea = "";
+        TextTextEditor = "";
+        TextURL = "http://";
+        ForeignKeyDropDown = 0;
+        ForeignKeyOption = 0;
+        TextHexColour = "#FFFFFF";
+        Time = TimeSpan.Parse("00:00");
+        
+    }
+    else
+    {
+        NonQueryText = "Edit";
+        NonQueryIcon = "fas fa-pen";
+
+        ExampleModel ExampleModel = new ExampleModel().Select1ByExampleIdToModel
+        (Convert.ToInt32(HttpContext.Request.QueryString.Value.Replace("?ExampleId=","")));
+
+        ExampleId = ExampleModel.ExampleId;
+        Boolean = ExampleModel.Boolean;
+        DateTime = ExampleModel.DateTime;
+        Decimal = ExampleModel.Decimal;
+        Integer = ExampleModel.Integer;
+        TextBasic = ExampleModel.TextBasic;
+        TextEmail = ExampleModel.TextEmail;
+        TextFile = ExampleModel.TextFile;
+        TextPassword = ExampleModel.TextPassword;
+        TextPhoneNumber = ExampleModel.TextPhoneNumber;
+        TextTag = ExampleModel.TextTag;
+        TextTextArea = ExampleModel.TextTextArea;
+        TextTextEditor = ExampleModel.TextTextEditor;
+        TextURL = ExampleModel.TextURL;
+        ForeignKeyDropDown = ExampleModel.ForeignKeyDropDown;
+        ForeignKeyOption = ExampleModel.ForeignKeyOption;
+        TextHexColour = ExampleModel.TextHexColour;
+        Time = ExampleModel.Time;
+        
+    }
+
+/*
+ * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
+ * 
+ * Coded by fiyistack.com
+ * Copyright © 2023
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ */
+    
+//Stack: 11
+//Last modification on: 21/02/2023 13:45:23
+
+}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <!-- Header body -->
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <!-- Title -->
+                    <h2 class="h2 text-white d-inline-block mb-0">
+                        @NonQueryText 
+                        example
+                    </h2>
+                    <input type="hidden" 
+                        id="examples-example-exampleid-input" 
+                        value="@ExampleId"/>
+                    <!-- Breadcrumb -->
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item">
+                                <a href="/CMSCore/DashboardIndex">
+                                    <i class="fas fa-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)">
+                                    Examples
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)">
+                                    Example
+                                 </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <i class="@NonQueryIcon"></i>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <!-- XL Screens -->
+                    <div class="d-none d-xl-inline">
+                        <a href="/Examples/ExampleQueryPage" class="btn btn-secondary">
+                            <i class="fas fa-angle-left"></i> Go back
+                        </a>
+                    </div>
+                    <!-- Other Screens -->
+                    <div class="d-inline d-sm-inline d-md-inline d-lg-inline d-xl-none">
+                        <a href="/Examples/ExampleQueryPage" class="btn btn-secondary">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+<div class="row">
+    <div class="col">
+            <!-- Card -->
+            <div class="card">
+                <!-- Card body -->
+                <div class="card-body">
+                    <form class="needs-validation" novalidate>
+                        <!-- Boolean -->
+                            <div class="form-group mb-3">
+                                <label for="examples-example-boolean-input" class="form-control-label">
+                                    <i class="fas fa-toggle-on"></i> Boolean
+                                </label>
+                                <br/>
+                                <input type="checkbox" 
+                                    id="examples-example-boolean-input"
+                                    @(Boolean == true ? "checked" : "" )
+                                    required/>
+                                <br />
+                                <p class="text-danger text-sm">
+                                    <b>This value is required.</b>
+                                </p>
+                            </div>
+                        <!-- DateTime -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-calendar"></i> DateTime
+                                </label>
+                                <input id="examples-example-datetime-input" 
+                                    value="@DateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" 
+                                    type="datetime-local" 
+                                    min="1753-01-01T00:00" 
+                                    max="9998-12-30T23:59" 
+                                    class="form-control"
+                                    required/>
+                                <div class="invalid-feedback">
+                                    This value is required.
+                                </div>
+                            </div>
+                        <!-- Decimal -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-decimal-input" class="form-control-label">
+                                <i class="fas fa-divide"></i> Decimal
+                            </label>
+                            <input class="form-control" 
+                                type="number" 
+                                id="examples-example-decimal-input"
+                                value="@(Convert.ToDouble(Decimal))" 
+                                min="5.000000" 
+                                max="20" 
+                                step=".01" 
+                                pattern="^\d*(\.\d{0,2})?$" 
+                                required>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- Integer -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-integer-input" class="form-control-label">
+                                <i class="fas fa-divide"></i> 
+                                Integer
+                            </label>
+                            <input class="form-control" 
+                                type="number" 
+                                id="examples-example-integer-input" 
+                                value="@Integer" 
+                                min="5" 
+                                max="20" 
+                                step="1" 
+                                pattern="[^0-9]"
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextBasic -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-textbasic-input" class="form-control-label">
+                                <i class="fas fa-font"></i> TextBasic
+                            </label>
+                            <input class="form-control" 
+                                min="5" 
+                                max="20" 
+                                type="text" 
+                                id="examples-example-textbasic-input" 
+                                value="@TextBasic"
+                                required/>
+                            <div class="invalid-feedback">
+                                    This value is required.
+                                </div>
+                        </div>
+                        <!-- TextEmail -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-textemail-input" class="form-control-label">
+                                <i class="fas fa-at"></i> TextEmail
+                            </label>
+                            <input class="form-control" 
+                                type="email" 
+                                min="5" 
+                                max="20" 
+                                id="examples-example-textemail-input" 
+                                value="@TextEmail" 
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextFile -->
+                        <div class="form-group">
+                            <label class="form-control-label">
+                                <i class="fas fa-file"></i> TextFile
+                            </label>
+                            <br/>
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-preview img-thumbnail" 
+                                    data-trigger="fileinput" 
+                                    style="width: 200px; height: 150px;">
+                                </div>
+                                <div>
+                                    <span class="btn btn-primary btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" 
+                                            min="1" 
+                                            max="8000" 
+                                            id="examples-example-textfile-input" 
+                                            value=""/>
+                                    </span>
+                                    <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                            <input type="hidden" 
+                                min="1" 
+                                max="8000" 
+                                id="examples-example-textfile-readonly" 
+                                value="@TextFile"/>
+                            <br />
+                            @if (@TextFile == ""){
+                                <p class="text-danger text-sm">
+                                    <b>This value is required.</b>
+                                </p>
+                            }
+                            else
+                            {
+                                <a class="btn btn-info btn-sm"
+                                    href="@TextFile"
+                                    download>
+                                        <i class="fas fa-download"></i>
+                                        Download file
+                                </a>
+                            }
+                        </div>
+                        <!-- TextPassword -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-textpassword-input" class="form-control-label">
+                                <i class="fas fa-asterisk"></i> 
+                                TextPassword
+                            </label>
+                            <input class="form-control" 
+                                min="5" 
+                                max="20" 
+                                type="password" 
+                                id="examples-example-textpassword-input" 
+                                value="@TextPassword" 
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextPhoneNumber -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-textphonenumber-input" class="form-control-label">
+                                <i class="fas fa-phone"></i> 
+                                TextPhoneNumber
+                            </label>
+                            <input class="form-control mt-2" 
+                                min="5" 
+                                max="20" 
+                                type="tel" 
+                                id="examples-example-textphonenumber-input" 
+                                value="@TextPhoneNumber" 
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextTag -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-texttag-input" class="form-control-label">
+                                <i class="fas fa-tag"></i> TextTag
+                            </label>
+                            <br/>
+                            <input type="text" 
+                                class="form-control" 
+                                min="5" 
+                                max="20" 
+                                id="examples-example-texttag-input" 
+                                value="@TextTag" 
+                                data-toggle="tags" 
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextTextArea -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-texttextarea-input" class="form-control-label">
+                                <i class="fas fa-font"></i> 
+                                TextTextArea
+                            </label>
+                            <textarea class="form-control mt-1" 
+                                id="examples-example-texttextarea-input" 
+                                rows="3" 
+                                resize="none" 
+                                required>
+                                    @TextTextArea
+                            </textarea>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- TextTextEditor -->
+                        <label for="examples-example-texttexteditor-input" class="form-control-label">
+                            <i class="fas fa-font"></i> 
+                            TextTextEditor
+                        </label>
+                        <div id="examples-example-texttexteditor-input">
+                        </div>
+                        <input type="hidden" 
+                            value="@TextTextEditor" 
+                            id="examples-example-texttexteditor-hidden-value">
+                        <div class="mb-3"></div>
+                        <!-- TextURL -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-texturl-input" class="form-control-label">
+                                <i class="fas fa-globe"></i> 
+                                TextURL
+                            </label>
+                            <input class="form-control" 
+                                type="url" 
+                                id="examples-example-texturl-input" 
+                                value="@TextURL" 
+                                required>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- ForeignKeyDropDown -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-hashtag"></i> ForeignKeyDropDown
+                                </label>
+                                <br/>
+                                <button type="button" 
+                                    class="btn btn-outline-primary border-0" 
+                                    data-toggle="modal" 
+                                    data-target="#modal-foreign-key-code-selector">
+                                        <i class="fas fa-hashtag"></i>
+                                </button>
+                                <ul id="examples-example-foreignkeydropdown-list"
+                                    class="nav nav-pills nav-fill flex-column flex-sm-row" 
+                                    role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0 active" 
+                                            data-toggle="tab" 
+                                            href="javascript:void(0)" 
+                                            role="tab" 
+                                            aria-controls="" 
+                                            aria-selected="true">
+                                                Choose a value
+                                        </a>
+                                        <input type="hidden" 
+                                            id="examples-example-foreignkeydropdown-input"
+                                            value="@ForeignKeyDropDown"/>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        <!-- ForeignKeyOption -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-hashtag"></i> 
+                                    ForeignKeyOption
+                                </label>
+                                <ul class="nav nav-pills nav-fill flex-column flex-sm-row" 
+                                    role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link mb-sm-3 mb-md-0 examples-example-foreignkeyoption-a active" 
+                                                data-toggle="tab" 
+                                                href="javascript:void(0)" 
+                                                role="tab" 
+                                                aria-controls="" 
+                                                aria-selected="true">
+                                                    Choose a value
+                                            </a>
+                                            <input type="hidden" value="0"/>
+                                        </li>
+                                </ul>
+                            </div>
+                        <!-- TextHexColour -->
+                        <div class="form-group mb-3">
+                            <label for="examples-example-texthexcolour-input" 
+                                class="form-control-label">
+                                    <i class="fas fa-palette"></i> 
+                                    TextHexColour
+                            </label>
+                            <input class="form-control" 
+                                type="color"
+                                min="000000"
+                                max="FFFFFF"
+                                value="@TextHexColour" 
+                                id="examples-example-texthexcolour-input"
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        <!-- Time -->
+                        <div class="form-group mb-3">
+                            <label class="form-control-label">
+                                <i class="fas fa-clock"></i> 
+                                Time
+                            </label>
+                            <input class="form-control" 
+                                type="time" 
+                                min="00:00" 
+                                max="23:59" 
+                                value="@Time" 
+                                id="examples-example-time-input"
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
+                            </div>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="row justify-content-between">
+                            <button class="btn btn-primary text-nowrap ml-3 mt-4" 
+                                type="submit">
+                                    <i class="@NonQueryIcon"></i> 
+                                    @NonQueryText
+                            </button>
+                            <a href="/Examples/ExampleQueryPage" 
+                                class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
+                                    <i class="fas fa-angle-left"></i> 
+                                    Go back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer py-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ForeignKeyDropDown selector in Modal style -->
+<div class="row">
+    <div class="col-md-4">
+        <!-- Modal -->
+        <div class="modal fade" id="modal-foreign-key-code-selector" tabindex="-1" role="dialog" aria-labelledby="modal-foreign-key-selector" aria-hidden="true">
+            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                <!-- Modal content -->
+                <div class="modal-content bg-gradient-secondary">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-primary">
+                            Choose a ForeignKeyDropDown value <i class="fas fa-hashtag"></i>
+                         </h6>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <select id="examples-example-foreignkeydropdown-select" class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Choose value" data-allow-reset="true">
+                                        <option value="0"></option> <!--This must be empty-->
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Phone code Selector in Modal style -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="modal fade" id="modal-phone-code-selector" tabindex="-1" role="dialog" aria-labelledby="modal-phone-code-selector" aria-hidden="true">
+            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-secondary">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-primary">Choose your phone code <i class="fas fa-globe-americas"></i></h6>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Country (+Code)" data-allow-reset="true">
+                                        <option></option> <!--This must be empty-->
+                                        <option>Argentina (+54)</option>
+                                        <option>USA (+1)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/BasicCore/jquery-3.6.1.min.js"></script>
+<script src="/assets/vendor/quill/dist/quill.min.js"></script>
+<script src="/js/Examples/Example/jQuery/ExampleNonQuery_jQuery.js"></script>
