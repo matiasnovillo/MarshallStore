@@ -411,77 +411,77 @@ namespace MarshallStore.Areas.MarshallStore.Models
 
                 productSelectAllPaged.TotalPages = Library.Math.Divide(productSelectAllPaged.TotalRows, productSelectAllPaged.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                //Loop through lists and sublists
-                for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
-                {
-                    DynamicParameters dpForPurchaseProductModel = new DynamicParameters();
-                    dpForPurchaseProductModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
-                    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
-                    {
-                        List<PurchaseProductModel> lstPurchaseProductModel = new List<PurchaseProductModel>();
-                        lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.SelectAllByProductIdCustom]", dpForPurchaseProductModel, commandType: CommandType.StoredProcedure);
+                ////Loop through lists and sublists
+                //for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
+                //{
+                //    DynamicParameters dpForPurchaseProductModel = new DynamicParameters();
+                //    dpForPurchaseProductModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
+                //    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                //    {
+                //        List<PurchaseProductModel> lstPurchaseProductModel = new List<PurchaseProductModel>();
+                //        lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.SelectAllByProductIdCustom]", dpForPurchaseProductModel, commandType: CommandType.StoredProcedure);
                         
-                        //Add list item inside another list
-                        foreach (var PurchaseProductModel in lstPurchaseProductModel)
-                        {
-                            productSelectAllPaged.lstProductModel[i].lstPurchaseProductModel.Add(PurchaseProductModel);
-                        }
-                    }
-                }
+                //        //Add list item inside another list
+                //        foreach (var PurchaseProductModel in lstPurchaseProductModel)
+                //        {
+                //            productSelectAllPaged.lstProductModel[i].lstPurchaseProductModel.Add(PurchaseProductModel);
+                //        }
+                //    }
+                //}
                 
-                //Loop through lists and sublists
-                for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
-                {
-                    DynamicParameters dpForShoppingCartModel = new DynamicParameters();
-                    dpForShoppingCartModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
-                    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
-                    {
-                        List<ShoppingCartModel> lstShoppingCartModel = new List<ShoppingCartModel>();
-                        lstShoppingCartModel = (List<ShoppingCartModel>)sqlConnection.Query<ShoppingCartModel>("[dbo].[MarshallStore.ShoppingCart.SelectAllByProductIdCustom]", dpForShoppingCartModel, commandType: CommandType.StoredProcedure);
+                ////Loop through lists and sublists
+                //for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
+                //{
+                //    DynamicParameters dpForShoppingCartModel = new DynamicParameters();
+                //    dpForShoppingCartModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
+                //    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                //    {
+                //        List<ShoppingCartModel> lstShoppingCartModel = new List<ShoppingCartModel>();
+                //        lstShoppingCartModel = (List<ShoppingCartModel>)sqlConnection.Query<ShoppingCartModel>("[dbo].[MarshallStore.ShoppingCart.SelectAllByProductIdCustom]", dpForShoppingCartModel, commandType: CommandType.StoredProcedure);
                         
-                        //Add list item inside another list
-                        foreach (var ShoppingCartModel in lstShoppingCartModel)
-                        {
-                            productSelectAllPaged.lstProductModel[i].lstShoppingCartModel.Add(ShoppingCartModel);
-                        }
-                    }
-                }
+                //        //Add list item inside another list
+                //        foreach (var ShoppingCartModel in lstShoppingCartModel)
+                //        {
+                //            productSelectAllPaged.lstProductModel[i].lstShoppingCartModel.Add(ShoppingCartModel);
+                //        }
+                //    }
+                //}
                 
-                //Loop through lists and sublists
-                for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
-                {
-                    DynamicParameters dpForRateModel = new DynamicParameters();
-                    dpForRateModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
-                    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
-                    {
-                        List<RateModel> lstRateModel = new List<RateModel>();
-                        lstRateModel = (List<RateModel>)sqlConnection.Query<RateModel>("[dbo].[MarshallStore.Rate.SelectAllByProductIdCustom]", dpForRateModel, commandType: CommandType.StoredProcedure);
+                ////Loop through lists and sublists
+                //for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
+                //{
+                //    DynamicParameters dpForRateModel = new DynamicParameters();
+                //    dpForRateModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
+                //    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                //    {
+                //        List<RateModel> lstRateModel = new List<RateModel>();
+                //        lstRateModel = (List<RateModel>)sqlConnection.Query<RateModel>("[dbo].[MarshallStore.Rate.SelectAllByProductIdCustom]", dpForRateModel, commandType: CommandType.StoredProcedure);
                         
-                        //Add list item inside another list
-                        foreach (var RateModel in lstRateModel)
-                        {
-                            productSelectAllPaged.lstProductModel[i].lstRateModel.Add(RateModel);
-                        }
-                    }
-                }
+                //        //Add list item inside another list
+                //        foreach (var RateModel in lstRateModel)
+                //        {
+                //            productSelectAllPaged.lstProductModel[i].lstRateModel.Add(RateModel);
+                //        }
+                //    }
+                //}
                 
-                //Loop through lists and sublists
-                for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
-                {
-                    DynamicParameters dpForCommentModel = new DynamicParameters();
-                    dpForCommentModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
-                    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
-                    {
-                        List<CommentModel> lstCommentModel = new List<CommentModel>();
-                        lstCommentModel = (List<CommentModel>)sqlConnection.Query<CommentModel>("[dbo].[MarshallStore.Comment.SelectAllByProductIdCustom]", dpForCommentModel, commandType: CommandType.StoredProcedure);
+                ////Loop through lists and sublists
+                //for (int i = 0; i < productSelectAllPaged.lstProductModel.Count; i++)
+                //{
+                //    DynamicParameters dpForCommentModel = new DynamicParameters();
+                //    dpForCommentModel.Add("ProductId", productSelectAllPaged.lstProductModel[i].ProductId, DbType.Int32, ParameterDirection.Input);
+                //    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                //    {
+                //        List<CommentModel> lstCommentModel = new List<CommentModel>();
+                //        lstCommentModel = (List<CommentModel>)sqlConnection.Query<CommentModel>("[dbo].[MarshallStore.Comment.SelectAllByProductIdCustom]", dpForCommentModel, commandType: CommandType.StoredProcedure);
                         
-                        //Add list item inside another list
-                        foreach (var CommentModel in lstCommentModel)
-                        {
-                            productSelectAllPaged.lstProductModel[i].lstCommentModel.Add(CommentModel);
-                        }
-                    }
-                }
+                //        //Add list item inside another list
+                //        foreach (var CommentModel in lstCommentModel)
+                //        {
+                //            productSelectAllPaged.lstProductModel[i].lstCommentModel.Add(CommentModel);
+                //        }
+                //    }
+                //}
                 
                 
 
