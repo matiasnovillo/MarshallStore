@@ -20,7 +20,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 31/07/2023 14:32:16
+//Last modification on: 01/08/2023 19:39:01
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -539,7 +539,7 @@ function ValidateAndSearch() {
 }
 
 //LOAD EVENT
-if ($("#marshallstore-product-title-page").html().includes("Query product")) {
+if ($("#marshallstore-product-title-page").html().includes("Marshall Store")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;

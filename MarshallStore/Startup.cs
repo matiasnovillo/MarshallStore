@@ -59,6 +59,8 @@ namespace MarshallStore
             services.AddScoped<IMenu, MenuService>();
             services.AddScoped<IRoleMenu, RoleMenuService>();
             services.AddScoped<IRole, RoleService>();
+
+            //Area: MarshallStore
             services.AddScoped<IProduct, ProductService>();
             services.AddScoped<IProductCategory, ProductCategoryService>();
             services.AddScoped<IShoppingCart, ShoppingCartService>();

@@ -17,7 +17,7 @@ require("bootstrap-notify");
  *
 */
 //Stack: 10
-//Last modification on: 31/07/2023 14:32:16
+//Last modification on: 01/08/2023 19:39:01
 //Set default values
 var LastTopDistance = 0;
 var QueryString = "";
@@ -221,7 +221,7 @@ function ValidateAndSearch() {
     ProductQuery.SelectAllPagedToHTML(_productSelectAllPaged);
 }
 //LOAD EVENT
-if ($("#marshallstore-product-title-page").html().includes("Query product")) {
+if ($("#marshallstore-product-title-page").html().includes("Marshall Store")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;

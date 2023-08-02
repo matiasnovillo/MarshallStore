@@ -23,7 +23,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 31/07/2023 14:32:16
+//Last modification on: 01/08/2023 19:39:01
 
 namespace MarshallStore.Areas.MarshallStore.Services
 {
@@ -32,7 +32,7 @@ namespace MarshallStore.Areas.MarshallStore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 31/07/2023 14:32:16
+    /// Last modification: 01/08/2023 19:39:01
     /// </summary>
     public partial class ProductService : IProduct
     {

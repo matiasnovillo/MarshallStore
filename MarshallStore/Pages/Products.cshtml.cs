@@ -26,18 +26,11 @@ namespace MarshallStore.Areas.MarshallStore.Pages
     /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
     /// Last modification: 01/08/2023 19:39:01
     /// </summary>
-    [ProductFilter]
-    public partial class ProductQueryPageModel : PageModel
+    public partial class ProductsModel : PageModel
     {
         public void OnGet()
         {
-            int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
-            UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
 
-            string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
-
-            ViewData["FantasyName"] = UserModel.FantasyName;
-            ViewData["Menues"] = Menues;
-            }
+        }
     }
 }

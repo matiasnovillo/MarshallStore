@@ -13,7 +13,7 @@ using System;
  * 
  */
 
-//Last modification on: 31/07/2023 14:32:16
+//Last modification on: 01/08/2023 19:39:01
 
 namespace MarshallStore.Areas.MarshallStore.Filters
 {
@@ -21,17 +21,12 @@ namespace MarshallStore.Areas.MarshallStore.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 31/07/2023 14:32:16
+    /// Last modification: 01/08/2023 19:39:01
     /// </summary>
     public class ProductFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -40,11 +35,6 @@ namespace MarshallStore.Areas.MarshallStore.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)
