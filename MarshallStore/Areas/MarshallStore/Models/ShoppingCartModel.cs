@@ -75,6 +75,14 @@ namespace MarshallStore.Areas.MarshallStore.Models
 
         [Library.ModelAttributeValidator.Int("Counter", false, 0, 9999)]
         public int Counter { get; set; }
+
+        public string Producer { get; set; }
+
+        public string Model { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string Image1 { get; set; }
         #endregion
 
         #region Sub-lists
@@ -226,6 +234,28 @@ namespace MarshallStore.Areas.MarshallStore.Models
             catch (Exception ex) { throw ex; }
         }
 
+        public int CountByUserCreationId(int UserCreationId)
+        {
+            try
+            {
+                DynamicParameters dp = new DynamicParameters();
+                DataTable DataTable = new DataTable();
+
+                dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[MarshallStore.ShoppingCart.CountByUserCreationId]", commandType: CommandType.StoredProcedure, param: dp);
+                    DataTable.Load(dataReader);
+                }
+
+                int RowsCounter = Convert.ToInt32(DataTable.Rows[0][0].ToString());
+
+                return RowsCounter;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         #region Queries to DataTable
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
@@ -323,6 +353,25 @@ namespace MarshallStore.Areas.MarshallStore.Models
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
                     lstShoppingCartModel = (List<ShoppingCartModel>)sqlConnection.Query<ShoppingCartModel>("[dbo].[MarshallStore.ShoppingCart.SelectAll]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                return lstShoppingCartModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public List<ShoppingCartModel> SelectAllByUserCreationIdToList(int UserCreationId)
+        {
+            try
+            {
+                List<ShoppingCartModel> lstShoppingCartModel = new List<ShoppingCartModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstShoppingCartModel = (List<ShoppingCartModel>)sqlConnection.Query<ShoppingCartModel>("[dbo].[MarshallStore.ShoppingCart.SelectAllByUserCreationId]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstShoppingCartModel;

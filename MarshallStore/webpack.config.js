@@ -114,7 +114,8 @@
          rateselectallpaged: ["./wwwroot/ts/MarshallStore/Rate/DTOs/rateSelectAllPaged"],
          shoppingcarttsmodel: ["./wwwroot/ts/MarshallStore/ShoppingCart/TsModels/ShoppingCart_TsModel"],
          shoppingcartjquery: ["./wwwroot/ts/MarshallStore/ShoppingCart/jQuery/ShoppingCartQuery_jQuery"],
-         shoppingcartselectallpaged: ["./wwwroot/ts/MarshallStore/ShoppingCart/DTOs/shoppingcartSelectAllPaged"]
+         shoppingcartselectallpaged: ["./wwwroot/ts/MarshallStore/ShoppingCart/DTOs/shoppingcartSelectAllPaged"],
+         cart: ["./wwwroot/ts/MarshallStore/ShoppingCart/jQuery/Cart"]
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)

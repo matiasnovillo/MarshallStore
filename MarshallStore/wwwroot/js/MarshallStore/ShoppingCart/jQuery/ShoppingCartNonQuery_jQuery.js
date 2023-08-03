@@ -61,7 +61,7 @@ $(document).ready(function () {
                     }
                     else {
                         //SUCCESS
-                        window.location.replace("/MarshallStore/ShoppingCartQueryPage");
+                        window.location.replace(`/Product/${$("#marshallstore-shoppingcart-productid-input").val()}`);
                     }
                 };
                 //Open connection
