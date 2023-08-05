@@ -20,7 +20,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -78,13 +78,68 @@ class PurchaseQuery {
             </button>
         </th>
         <th scope="col">
-            <button value="Address" class="btn btn-outline-secondary btn-sm" type="button">
-                Address
+            <button value="FullPrice" class="btn btn-outline-secondary btn-sm" type="button">
+                FullPrice
             </button>
         </th>
         <th scope="col">
-            <button value="FullPrice" class="btn btn-outline-secondary btn-sm" type="button">
-                FullPrice
+            <button value="FirstName" class="btn btn-outline-secondary btn-sm" type="button">
+                FirstName
+            </button>
+        </th>
+        <th scope="col">
+            <button value="LastName" class="btn btn-outline-secondary btn-sm" type="button">
+                LastName
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Email" class="btn btn-outline-secondary btn-sm" type="button">
+                Email
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Phone" class="btn btn-outline-secondary btn-sm" type="button">
+                Phone
+            </button>
+        </th>
+        <th scope="col">
+            <button value="StreetAddress" class="btn btn-outline-secondary btn-sm" type="button">
+                StreetAddress
+            </button>
+        </th>
+        <th scope="col">
+            <button value="PostCodeOrZip" class="btn btn-outline-secondary btn-sm" type="button">
+                PostCodeOrZip
+            </button>
+        </th>
+        <th scope="col">
+            <button value="City" class="btn btn-outline-secondary btn-sm" type="button">
+                City
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Country" class="btn btn-outline-secondary btn-sm" type="button">
+                Country
+            </button>
+        </th>
+        <th scope="col">
+            <button value="CardNumber" class="btn btn-outline-secondary btn-sm" type="button">
+                CardNumber
+            </button>
+        </th>
+        <th scope="col">
+            <button value="CardHolder" class="btn btn-outline-secondary btn-sm" type="button">
+                CardHolder
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Expiration" class="btn btn-outline-secondary btn-sm" type="button">
+                Expiration
+            </button>
+        </th>
+        <th scope="col">
+            <button value="CVC" class="btn btn-outline-secondary btn-sm" type="button">
+                CVC
             </button>
         </th>
         
@@ -189,12 +244,71 @@ class PurchaseQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-font"></i> ${row.Address}
+            <i class="fas fa-divide"></i> ${row.FullPrice}
         </strong>
     </td>
     <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.FirstName}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.LastName}
+        </strong>
+    </td>
+    <td class="text-left">
+        <a href="mailto:${row.Email}">
+            <strong>
+                <i class="fas fa-at"></i> ${row.Email}
+            </strong>
+        </a>
+    </td>
+    <td class="text-left">
+        <a href="tel:${row.Phone}">
+            <strong>
+                <i class="fas fa-phone"></i> ${row.Phone}
+            </strong>
+        </a>
+    </td>
+    <td class="text-left">
         <strong>
-            <i class="fas fa-divide"></i> ${row.FullPrice}
+            <i class="fas fa-font"></i> ${row.StreetAddress}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.PostCodeOrZip}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.City}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.Country}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.CardNumber}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.CardHolder}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.Expiration}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.CVC}
         </strong>
     </td>
     
@@ -257,11 +371,59 @@ class PurchaseQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           Address <i class="fas fa-font"></i> ${row.Address}
+                           FullPrice <i class="fas fa-divide"></i> ${row.FullPrice}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           FullPrice <i class="fas fa-divide"></i> ${row.FullPrice}
+                           FirstName <i class="fas fa-font"></i> ${row.FirstName}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           LastName <i class="fas fa-font"></i> ${row.LastName}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                            <a style="color:#FFFFFF" href="mailto:${row.Email}">
+                               Email <i class="fas fa-at"></i> ${row.Email}
+                            <a/>
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                            <a style="color:#FFFFFF" href="tel:${row.Phone}">
+                               Phone <i class="fas fa-phone"></i> ${row.Phone}
+                            </a>
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           StreetAddress <i class="fas fa-font"></i> ${row.StreetAddress}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           PostCodeOrZip <i class="fas fa-font"></i> ${row.PostCodeOrZip}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           City <i class="fas fa-font"></i> ${row.City}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           Country <i class="fas fa-font"></i> ${row.Country}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           CardNumber <i class="fas fa-font"></i> ${row.CardNumber}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           CardHolder <i class="fas fa-font"></i> ${row.CardHolder}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           Expiration <i class="fas fa-font"></i> ${row.Expiration}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           CVC <i class="fas fa-font"></i> ${row.CVC}
                         </span>
                         <br/>
                         

@@ -15,7 +15,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 namespace MarshallStore.Areas.MarshallStore.Interfaces
 {
@@ -25,7 +25,7 @@ namespace MarshallStore.Areas.MarshallStore.Interfaces
     /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 31/07/2023 14:25:18
+    /// Last modification: 03/08/2023 18:27:16
     /// </summary>
     public partial interface IPurchase
     {

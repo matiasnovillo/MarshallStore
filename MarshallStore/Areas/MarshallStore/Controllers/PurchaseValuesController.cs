@@ -25,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 namespace MarshallStore.Areas.MarshallStore.Controllers
 {
@@ -33,7 +33,7 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 31/07/2023 14:25:18
+    /// Last modification: 03/08/2023 18:27:16
     /// </summary>
     [ApiController]
     [PurchaseFilter]
@@ -163,10 +163,21 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
                 
                 #region Pass data from client to server
                 //PurchaseId
-                int PurchaseId = Convert.ToInt32(HttpContext.Request.Form["marshallstore-purchase-purchaseid-input"]);
+                int PurchaseId = 0; //Always is a new Purchase, you cant edit it
                 
-                string Address = HttpContext.Request.Form["marshallstore-purchase-address-input"];
                 decimal FullPrice = Convert.ToDecimal(HttpContext.Request.Form["marshallstore-purchase-fullprice-input"].ToString().Replace(".",","));
+                string FirstName = HttpContext.Request.Form["marshallstore-purchase-firstname-input"];
+                string LastName = HttpContext.Request.Form["marshallstore-purchase-lastname-input"];
+                string Email = HttpContext.Request.Form["marshallstore-purchase-email-input"];
+                string Phone = HttpContext.Request.Form["marshallstore-purchase-phone-input"];
+                string StreetAddress = HttpContext.Request.Form["marshallstore-purchase-streetaddress-input"];
+                string PostCodeOrZip = HttpContext.Request.Form["marshallstore-purchase-postcodeorzip-input"];
+                string City = HttpContext.Request.Form["marshallstore-purchase-city-input"];
+                string Country = HttpContext.Request.Form["marshallstore-purchase-country-input"];
+                string CardNumber = HttpContext.Request.Form["marshallstore-purchase-cardnumber-input"];
+                string CardHolder = HttpContext.Request.Form["marshallstore-purchase-cardholder-input"];
+                string Expiration = HttpContext.Request.Form["marshallstore-purchase-expiration-input"];
+                string CVC = HttpContext.Request.Form["marshallstore-purchase-cvc-input"];
                 
                 #endregion
 
@@ -183,8 +194,19 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
                         UserLastModificationId = UserId,
                         DateTimeCreation = DateTime.Now,
                         DateTimeLastModification = DateTime.Now,
-                        Address = Address,
                         FullPrice = FullPrice,
+                        FirstName = FirstName,
+                        LastName = LastName,
+                        Email = Email,
+                        Phone = Phone,
+                        StreetAddress = StreetAddress,
+                        PostCodeOrZip = PostCodeOrZip,
+                        City = City,
+                        Country = Country,
+                        CardNumber = CardNumber,
+                        CardHolder = CardHolder,
+                        Expiration = Expiration,
+                        CVC = CVC,
                         
                     };
                     
@@ -197,8 +219,19 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
                     
                     PurchaseModel.UserLastModificationId = UserId;
                     PurchaseModel.DateTimeLastModification = DateTime.Now;
-                    PurchaseModel.Address = Address;
                     PurchaseModel.FullPrice = FullPrice;
+                    PurchaseModel.FirstName = FirstName;
+                    PurchaseModel.LastName = LastName;
+                    PurchaseModel.Email = Email;
+                    PurchaseModel.Phone = Phone;
+                    PurchaseModel.StreetAddress = StreetAddress;
+                    PurchaseModel.PostCodeOrZip = PostCodeOrZip;
+                    PurchaseModel.City = City;
+                    PurchaseModel.Country = Country;
+                    PurchaseModel.CardNumber = CardNumber;
+                    PurchaseModel.CardHolder = CardHolder;
+                    PurchaseModel.Expiration = Expiration;
+                    PurchaseModel.CVC = CVC;
                                        
 
                     RowsAffected = _IPurchase.UpdateByPurchaseId(PurchaseModel);

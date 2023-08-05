@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 //Create a formdata object
 var formData = new FormData();
@@ -42,8 +42,19 @@ $(document).ready(function () {
                 //PurchaseId
                 formData.append("marshallstore-purchase-purchaseid-input", $("#marshallstore-purchase-purchaseid-input").val());
 
-                formData.append("marshallstore-purchase-address-input", $("#marshallstore-purchase-address-input").val());
                 formData.append("marshallstore-purchase-fullprice-input", $("#marshallstore-purchase-fullprice-input").val());
+                formData.append("marshallstore-purchase-firstname-input", $("#marshallstore-purchase-firstname-input").val());
+                formData.append("marshallstore-purchase-lastname-input", $("#marshallstore-purchase-lastname-input").val());
+                formData.append("marshallstore-purchase-email-input", $("#marshallstore-purchase-email-input").val());
+                formData.append("marshallstore-purchase-phone-input", $("#marshallstore-purchase-phone-input").val());
+                formData.append("marshallstore-purchase-streetaddress-input", $("#marshallstore-purchase-streetaddress-input").val());
+                formData.append("marshallstore-purchase-postcodeorzip-input", $("#marshallstore-purchase-postcodeorzip-input").val());
+                formData.append("marshallstore-purchase-city-input", $("#marshallstore-purchase-city-input").val());
+                formData.append("marshallstore-purchase-country-input", $("#marshallstore-purchase-country-input").val());
+                formData.append("marshallstore-purchase-cardnumber-input", $("#marshallstore-purchase-cardnumber-input").val());
+                formData.append("marshallstore-purchase-cardholder-input", $("#marshallstore-purchase-cardholder-input").val());
+                formData.append("marshallstore-purchase-expiration-input", $("#marshallstore-purchase-expiration-input").val());
+                formData.append("marshallstore-purchase-cvc-input", $("#marshallstore-purchase-cvc-input").val());
                 
 
                 //Setup request
@@ -61,7 +72,7 @@ $(document).ready(function () {
                     }
                     else {
                         //SUCCESS
-                        window.location.replace("/MarshallStore/PurchaseQueryPage");
+                        window.location.replace("/PurchaseFinished");
                     }
                 };
                 //Open connection

@@ -699,6 +699,31 @@ namespace MarshallStore.Areas.MarshallStore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+
+        public int DeleteByUserCreationId(int UserCreationId)
+        {
+            try
+            {
+                int RowsAffected = 0;
+                DynamicParameters dp = new DynamicParameters();
+                DataTable DataTable = new DataTable();
+
+                dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[MarshallStore.ShoppingCart.DeleteByUserCreationId]", commandType: CommandType.StoredProcedure, param: dp);
+                    DataTable.Load(dataReader);
+                    RowsAffected = dp.Get<int>("RowsAffected");
+                }
+
+                if (RowsAffected == 0) { throw new Exception("RowsAffected with no value"); }
+
+                return RowsAffected;
+            }
+            catch (Exception ex) { throw ex; }
+        }
         #endregion
 
         /// <summary>

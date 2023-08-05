@@ -41,16 +41,16 @@
             <h4 class="title">@ViewData["Producer"]</h4>
             <br />
             <h2 class="main-price">$@ViewData["Price"]</h2>
-            <h6 class="category">Description</h6>
+            <h6 class="category">Description</h6> 
             <p class="description">@ViewData["Description"]</p>
             <br>
             <br>
             <form class="needs-validation">
                 <input type="hidden" id="marshallstore-shoppingcart-shoppingcartid-input" value="0"/>
                 <input type="hidden" id="marshallstore-shoppingcart-productid-input" value="@ViewData["ProductId"]"/>
-                <input type="number" id="marshallstore-shoppingcart-counter-input" value="1"/>
+                <input type="number" id="marshallstore-shoppingcart-counter-input" min="1" value="1"/>
                 <br />
-                @ViewData["AddToCartButton"]
+                @Html.Raw(@ViewData["AddToCartButton"])
             </form>
           </div>
         </div>

@@ -16,7 +16,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 namespace MarshallStore.Areas.MarshallStore.Pages
 {
@@ -24,7 +24,7 @@ namespace MarshallStore.Areas.MarshallStore.Pages
     /// Stack:             9 <br/>
     /// Name:              C# Razor Page. <br/>
     /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
-    /// Last modification: 31/07/2023 14:25:18
+    /// Last modification: 03/08/2023 18:27:16
     /// </summary>
     [PurchaseFilter]
     public partial class PurchaseQueryPageModel : PageModel

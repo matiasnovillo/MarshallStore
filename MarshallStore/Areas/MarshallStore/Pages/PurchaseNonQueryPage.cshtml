@@ -8,8 +8,19 @@
     string NonQueryIcon = "";
 
     int PurchaseId;
-    string Address;
     decimal FullPrice;
+    string FirstName;
+    string LastName;
+    string Email;
+    string Phone;
+    string StreetAddress;
+    string PostCodeOrZip;
+    string City;
+    string Country;
+    string CardNumber;
+    string CardHolder;
+    string Expiration;
+    string CVC;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?PurchaseId=0"))
@@ -18,8 +29,19 @@
         NonQueryIcon = "fas fa-plus";
 
         PurchaseId = 0;
-        Address = "";
         FullPrice = 0M;
+        FirstName = "";
+        LastName = "";
+        Email = "";
+        Phone = "";
+        StreetAddress = "";
+        PostCodeOrZip = "";
+        City = "";
+        Country = "";
+        CardNumber = "";
+        CardHolder = "";
+        Expiration = "";
+        CVC = "";
         
     }
     else
@@ -31,8 +53,19 @@
         (Convert.ToInt32(HttpContext.Request.QueryString.Value.Replace("?PurchaseId=","")));
 
         PurchaseId = PurchaseModel.PurchaseId;
-        Address = PurchaseModel.Address;
         FullPrice = PurchaseModel.FullPrice;
+        FirstName = PurchaseModel.FirstName;
+        LastName = PurchaseModel.LastName;
+        Email = PurchaseModel.Email;
+        Phone = PurchaseModel.Phone;
+        StreetAddress = PurchaseModel.StreetAddress;
+        PostCodeOrZip = PurchaseModel.PostCodeOrZip;
+        City = PurchaseModel.City;
+        Country = PurchaseModel.Country;
+        CardNumber = PurchaseModel.CardNumber;
+        CardHolder = PurchaseModel.CardHolder;
+        Expiration = PurchaseModel.Expiration;
+        CVC = PurchaseModel.CVC;
         
     }
 
@@ -48,7 +81,7 @@
  */
     
 //Stack: 11
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 }
 <!-- Header -->
@@ -117,21 +150,6 @@
                 <!-- Card body -->
                 <div class="card-body">
                     <form class="needs-validation" novalidate>
-                        <!-- Address -->
-                        <div class="form-group mb-3">
-                            <label for="marshallstore-purchase-address-input" class="form-control-label">
-                                <i class="fas fa-font"></i> 
-                                Address
-                            </label>
-                            <textarea class="form-control mt-1" 
-                                id="marshallstore-purchase-address-input" 
-                                rows="3" 
-                                resize="none" 
-                                >
-                                    @Address
-                            </textarea>
-                            
-                        </div>
                         <!-- FullPrice -->
                         <div class="form-group mb-3">
                             <label for="marshallstore-purchase-fullprice-input" class="form-control-label">
@@ -146,6 +164,178 @@
                                 step=".01" 
                                 pattern="^\d*(\.\d{0,2})?$" 
                                 >
+                            
+                        </div>
+                        <!-- FirstName -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-firstname-input" class="form-control-label">
+                                <i class="fas fa-font"></i> FirstName
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="300" 
+                                type="text" 
+                                id="marshallstore-purchase-firstname-input" 
+                                value="@FirstName"
+                                />
+                            
+                        </div>
+                        <!-- LastName -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-lastname-input" class="form-control-label">
+                                <i class="fas fa-font"></i> LastName
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="300" 
+                                type="text" 
+                                id="marshallstore-purchase-lastname-input" 
+                                value="@LastName"
+                                />
+                            
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-email-input" class="form-control-label">
+                                <i class="fas fa-at"></i> Email
+                            </label>
+                            <input class="form-control" 
+                                type="email" 
+                                min="1" 
+                                max="370" 
+                                id="marshallstore-purchase-email-input" 
+                                value="@Email" 
+                                />
+                            
+                        </div>
+                        <!-- Phone -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-phone-input" class="form-control-label">
+                                <i class="fas fa-phone"></i> 
+                                Phone
+                            </label>
+                            <input class="form-control mt-2" 
+                                min="1" 
+                                max="500" 
+                                type="tel" 
+                                id="marshallstore-purchase-phone-input" 
+                                value="@Phone" 
+                                />
+                            
+                        </div>
+                        <!-- StreetAddress -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-streetaddress-input" class="form-control-label">
+                                <i class="fas fa-font"></i> 
+                                StreetAddress
+                            </label>
+                            <textarea class="form-control mt-1" 
+                                id="marshallstore-purchase-streetaddress-input" 
+                                rows="3" 
+                                resize="none" 
+                                >
+                                    @StreetAddress
+                            </textarea>
+                            
+                        </div>
+                        <!-- PostCodeOrZip -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-postcodeorzip-input" class="form-control-label">
+                                <i class="fas fa-font"></i> PostCodeOrZip
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="100" 
+                                type="text" 
+                                id="marshallstore-purchase-postcodeorzip-input" 
+                                value="@PostCodeOrZip"
+                                />
+                            
+                        </div>
+                        <!-- City -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-city-input" class="form-control-label">
+                                <i class="fas fa-font"></i> City
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="300" 
+                                type="text" 
+                                id="marshallstore-purchase-city-input" 
+                                value="@City"
+                                />
+                            
+                        </div>
+                        <!-- Country -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-country-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Country
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="300" 
+                                type="text" 
+                                id="marshallstore-purchase-country-input" 
+                                value="@Country"
+                                />
+                            
+                        </div>
+                        <!-- CardNumber -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-cardnumber-input" class="form-control-label">
+                                <i class="fas fa-font"></i> CardNumber
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="50" 
+                                type="text" 
+                                id="marshallstore-purchase-cardnumber-input" 
+                                value="@CardNumber"
+                                />
+                            
+                        </div>
+                        <!-- CardHolder -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-cardholder-input" class="form-control-label">
+                                <i class="fas fa-font"></i> CardHolder
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="400" 
+                                type="text" 
+                                id="marshallstore-purchase-cardholder-input" 
+                                value="@CardHolder"
+                                required/>
+                            <div class="invalid-feedback">
+                                    This value is required.
+                                </div>
+                        </div>
+                        <!-- Expiration -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-expiration-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Expiration
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="10" 
+                                type="text" 
+                                id="marshallstore-purchase-expiration-input" 
+                                value="@Expiration"
+                                />
+                            
+                        </div>
+                        <!-- CVC -->
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-purchase-cvc-input" class="form-control-label">
+                                <i class="fas fa-font"></i> CVC
+                            </label>
+                            <input class="form-control" 
+                                min="1" 
+                                max="10" 
+                                type="text" 
+                                id="marshallstore-purchase-cvc-input" 
+                                value="@CVC"
+                                />
                             
                         </div>
                         
@@ -219,6 +409,27 @@
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Country (+Code)" data-allow-reset="true">
                                         <option></option> <!--This must be empty-->
+                                        <option>Argentina (+54)</option>
+                                        <option>USA (+1)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/BasicCore/jquery-3.6.1.min.js"></script>
+<script src="/assets/vendor/quill/dist/quill.min.js"></script>
+<script src="/js/MarshallStore/Purchase/jQuery/PurchaseNonQuery_jQuery.js"></script>
+on> <!--This must be empty-->
                                         <option>Argentina (+54)</option>
                                         <option>USA (+1)</option>
                                     </select>

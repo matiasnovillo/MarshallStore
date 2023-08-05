@@ -5,6 +5,19 @@
     "DateTimeLastModification" : "1753-01-01T00:00:00.001Z",
     "UserCreationId" : 1,
     "UserLastModificationId" : 1,
-    "Address" : "PutAddress",
-    "FullPrice" : 3.14
+    "FullPrice" : 3.14,
+    "FirstName" : "PutFirstName",
+    "LastName" : "PutLastName",
+    "Email" : "PutEmail",
+    "Phone" : "PutPhone",
+    "StreetAddress" : "PutStreetAddress",
+    "PostCodeOrZip" : "PutPostCodeOrZip",
+    "City" : "PutCity",
+    "Country" : "PutCountry",
+    "CardNumber" : "PutCardNumber",
+    "CardHolder" : "PutCardHolder",
+    "Expiration" : "PutExpiration",
+    "CVC" : "PutCVC"
+}tion",
+    "CVC" : "PutCVC"
 }

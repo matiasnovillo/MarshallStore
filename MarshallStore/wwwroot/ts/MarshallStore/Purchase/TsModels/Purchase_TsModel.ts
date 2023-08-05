@@ -15,7 +15,7 @@ import { PurchaseProductModel } from "../../PurchaseProduct/TsModels/PurchasePro
  * 
 */
 
-//8 fields | Sub-models: 1 models  | Last modification on: 31/07/2023 14:25:18 | Stack: 9
+//19 fields | Sub-models: 1 models  | Last modification on: 03/08/2023 18:27:16 | Stack: 9
 
 export class PurchaseModel {
 
@@ -26,8 +26,19 @@ export class PurchaseModel {
 	DateTimeLastModification?: string | string[] | number | undefined;
 	UserCreationId?: number;
 	UserLastModificationId?: number;
-	Address?: string | string[] | number | undefined;
 	FullPrice?: number;
+	FirstName?: string | string[] | number | undefined;
+	LastName?: string | string[] | number | undefined;
+	Email?: string | string[] | number | undefined;
+	Phone?: string | string[] | number | undefined;
+	StreetAddress?: string | string[] | number | undefined;
+	PostCodeOrZip?: string | string[] | number | undefined;
+	City?: string | string[] | number | undefined;
+	Country?: string | string[] | number | undefined;
+	CardNumber?: string | string[] | number | undefined;
+	CardHolder?: string | string[] | number | undefined;
+	Expiration?: string | string[] | number | undefined;
+	CVC?: string | string[] | number | undefined;
     lstPurchaseProductModel?: PurchaseProductModel[] | undefined;
     
 

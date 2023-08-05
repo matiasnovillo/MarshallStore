@@ -23,7 +23,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 namespace MarshallStore.Areas.MarshallStore.Services
 {
@@ -32,7 +32,7 @@ namespace MarshallStore.Areas.MarshallStore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 31/07/2023 14:25:18
+    /// Last modification: 03/08/2023 18:27:16
     /// </summary>
     public partial class PurchaseService : IPurchase
     {
@@ -63,6 +63,10 @@ namespace MarshallStore.Areas.MarshallStore.Services
         #region Non-Queries
         public int Insert(PurchaseModel PurchaseModel)
         {
+            //Delete ShoppingCart by UserCreationId
+            ShoppingCartModel ShoppingCartModel = new ShoppingCartModel();
+            ShoppingCartModel.DeleteByUserCreationId(PurchaseModel.UserCreationId);
+
             return new PurchaseModel().Insert(PurchaseModel);
         }
 
@@ -213,12 +217,67 @@ namespace MarshallStore.Areas.MarshallStore.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Address&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">FullPrice&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">FullPrice&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">FirstName&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">LastName&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Email&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Phone&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">StreetAddress&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">PostCodeOrZip&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">City&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Country&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CardNumber&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CardHolder&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Expiration&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CVC&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
@@ -280,15 +339,70 @@ namespace MarshallStore.Areas.MarshallStore.Services
                     dtColumnUserLastModificationIdFordtPurchaseCopy.ColumnName = "UserLastModificationId";
                     dtPurchaseCopy.Columns.Add(dtColumnUserLastModificationIdFordtPurchaseCopy);
 
-                    DataColumn dtColumnAddressFordtPurchaseCopy = new DataColumn();
-                    dtColumnAddressFordtPurchaseCopy.DataType = typeof(string);
-                    dtColumnAddressFordtPurchaseCopy.ColumnName = "Address";
-                    dtPurchaseCopy.Columns.Add(dtColumnAddressFordtPurchaseCopy);
-
                     DataColumn dtColumnFullPriceFordtPurchaseCopy = new DataColumn();
                     dtColumnFullPriceFordtPurchaseCopy.DataType = typeof(string);
                     dtColumnFullPriceFordtPurchaseCopy.ColumnName = "FullPrice";
                     dtPurchaseCopy.Columns.Add(dtColumnFullPriceFordtPurchaseCopy);
+
+                    DataColumn dtColumnFirstNameFordtPurchaseCopy = new DataColumn();
+                    dtColumnFirstNameFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnFirstNameFordtPurchaseCopy.ColumnName = "FirstName";
+                    dtPurchaseCopy.Columns.Add(dtColumnFirstNameFordtPurchaseCopy);
+
+                    DataColumn dtColumnLastNameFordtPurchaseCopy = new DataColumn();
+                    dtColumnLastNameFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnLastNameFordtPurchaseCopy.ColumnName = "LastName";
+                    dtPurchaseCopy.Columns.Add(dtColumnLastNameFordtPurchaseCopy);
+
+                    DataColumn dtColumnEmailFordtPurchaseCopy = new DataColumn();
+                    dtColumnEmailFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnEmailFordtPurchaseCopy.ColumnName = "Email";
+                    dtPurchaseCopy.Columns.Add(dtColumnEmailFordtPurchaseCopy);
+
+                    DataColumn dtColumnPhoneFordtPurchaseCopy = new DataColumn();
+                    dtColumnPhoneFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnPhoneFordtPurchaseCopy.ColumnName = "Phone";
+                    dtPurchaseCopy.Columns.Add(dtColumnPhoneFordtPurchaseCopy);
+
+                    DataColumn dtColumnStreetAddressFordtPurchaseCopy = new DataColumn();
+                    dtColumnStreetAddressFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnStreetAddressFordtPurchaseCopy.ColumnName = "StreetAddress";
+                    dtPurchaseCopy.Columns.Add(dtColumnStreetAddressFordtPurchaseCopy);
+
+                    DataColumn dtColumnPostCodeOrZipFordtPurchaseCopy = new DataColumn();
+                    dtColumnPostCodeOrZipFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnPostCodeOrZipFordtPurchaseCopy.ColumnName = "PostCodeOrZip";
+                    dtPurchaseCopy.Columns.Add(dtColumnPostCodeOrZipFordtPurchaseCopy);
+
+                    DataColumn dtColumnCityFordtPurchaseCopy = new DataColumn();
+                    dtColumnCityFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCityFordtPurchaseCopy.ColumnName = "City";
+                    dtPurchaseCopy.Columns.Add(dtColumnCityFordtPurchaseCopy);
+
+                    DataColumn dtColumnCountryFordtPurchaseCopy = new DataColumn();
+                    dtColumnCountryFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCountryFordtPurchaseCopy.ColumnName = "Country";
+                    dtPurchaseCopy.Columns.Add(dtColumnCountryFordtPurchaseCopy);
+
+                    DataColumn dtColumnCardNumberFordtPurchaseCopy = new DataColumn();
+                    dtColumnCardNumberFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCardNumberFordtPurchaseCopy.ColumnName = "CardNumber";
+                    dtPurchaseCopy.Columns.Add(dtColumnCardNumberFordtPurchaseCopy);
+
+                    DataColumn dtColumnCardHolderFordtPurchaseCopy = new DataColumn();
+                    dtColumnCardHolderFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCardHolderFordtPurchaseCopy.ColumnName = "CardHolder";
+                    dtPurchaseCopy.Columns.Add(dtColumnCardHolderFordtPurchaseCopy);
+
+                    DataColumn dtColumnExpirationFordtPurchaseCopy = new DataColumn();
+                    dtColumnExpirationFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnExpirationFordtPurchaseCopy.ColumnName = "Expiration";
+                    dtPurchaseCopy.Columns.Add(dtColumnExpirationFordtPurchaseCopy);
+
+                    DataColumn dtColumnCVCFordtPurchaseCopy = new DataColumn();
+                    dtColumnCVCFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCVCFordtPurchaseCopy.ColumnName = "CVC";
+                    dtPurchaseCopy.Columns.Add(dtColumnCVCFordtPurchaseCopy);
 
                     
                 #endregion
@@ -349,15 +463,70 @@ namespace MarshallStore.Areas.MarshallStore.Services
                     dtColumnUserLastModificationIdFordtPurchaseCopy.ColumnName = "UserLastModificationId";
                     dtPurchaseCopy.Columns.Add(dtColumnUserLastModificationIdFordtPurchaseCopy);
 
-                    DataColumn dtColumnAddressFordtPurchaseCopy = new DataColumn();
-                    dtColumnAddressFordtPurchaseCopy.DataType = typeof(string);
-                    dtColumnAddressFordtPurchaseCopy.ColumnName = "Address";
-                    dtPurchaseCopy.Columns.Add(dtColumnAddressFordtPurchaseCopy);
-
                     DataColumn dtColumnFullPriceFordtPurchaseCopy = new DataColumn();
                     dtColumnFullPriceFordtPurchaseCopy.DataType = typeof(string);
                     dtColumnFullPriceFordtPurchaseCopy.ColumnName = "FullPrice";
                     dtPurchaseCopy.Columns.Add(dtColumnFullPriceFordtPurchaseCopy);
+
+                    DataColumn dtColumnFirstNameFordtPurchaseCopy = new DataColumn();
+                    dtColumnFirstNameFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnFirstNameFordtPurchaseCopy.ColumnName = "FirstName";
+                    dtPurchaseCopy.Columns.Add(dtColumnFirstNameFordtPurchaseCopy);
+
+                    DataColumn dtColumnLastNameFordtPurchaseCopy = new DataColumn();
+                    dtColumnLastNameFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnLastNameFordtPurchaseCopy.ColumnName = "LastName";
+                    dtPurchaseCopy.Columns.Add(dtColumnLastNameFordtPurchaseCopy);
+
+                    DataColumn dtColumnEmailFordtPurchaseCopy = new DataColumn();
+                    dtColumnEmailFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnEmailFordtPurchaseCopy.ColumnName = "Email";
+                    dtPurchaseCopy.Columns.Add(dtColumnEmailFordtPurchaseCopy);
+
+                    DataColumn dtColumnPhoneFordtPurchaseCopy = new DataColumn();
+                    dtColumnPhoneFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnPhoneFordtPurchaseCopy.ColumnName = "Phone";
+                    dtPurchaseCopy.Columns.Add(dtColumnPhoneFordtPurchaseCopy);
+
+                    DataColumn dtColumnStreetAddressFordtPurchaseCopy = new DataColumn();
+                    dtColumnStreetAddressFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnStreetAddressFordtPurchaseCopy.ColumnName = "StreetAddress";
+                    dtPurchaseCopy.Columns.Add(dtColumnStreetAddressFordtPurchaseCopy);
+
+                    DataColumn dtColumnPostCodeOrZipFordtPurchaseCopy = new DataColumn();
+                    dtColumnPostCodeOrZipFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnPostCodeOrZipFordtPurchaseCopy.ColumnName = "PostCodeOrZip";
+                    dtPurchaseCopy.Columns.Add(dtColumnPostCodeOrZipFordtPurchaseCopy);
+
+                    DataColumn dtColumnCityFordtPurchaseCopy = new DataColumn();
+                    dtColumnCityFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCityFordtPurchaseCopy.ColumnName = "City";
+                    dtPurchaseCopy.Columns.Add(dtColumnCityFordtPurchaseCopy);
+
+                    DataColumn dtColumnCountryFordtPurchaseCopy = new DataColumn();
+                    dtColumnCountryFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCountryFordtPurchaseCopy.ColumnName = "Country";
+                    dtPurchaseCopy.Columns.Add(dtColumnCountryFordtPurchaseCopy);
+
+                    DataColumn dtColumnCardNumberFordtPurchaseCopy = new DataColumn();
+                    dtColumnCardNumberFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCardNumberFordtPurchaseCopy.ColumnName = "CardNumber";
+                    dtPurchaseCopy.Columns.Add(dtColumnCardNumberFordtPurchaseCopy);
+
+                    DataColumn dtColumnCardHolderFordtPurchaseCopy = new DataColumn();
+                    dtColumnCardHolderFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCardHolderFordtPurchaseCopy.ColumnName = "CardHolder";
+                    dtPurchaseCopy.Columns.Add(dtColumnCardHolderFordtPurchaseCopy);
+
+                    DataColumn dtColumnExpirationFordtPurchaseCopy = new DataColumn();
+                    dtColumnExpirationFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnExpirationFordtPurchaseCopy.ColumnName = "Expiration";
+                    dtPurchaseCopy.Columns.Add(dtColumnExpirationFordtPurchaseCopy);
+
+                    DataColumn dtColumnCVCFordtPurchaseCopy = new DataColumn();
+                    dtColumnCVCFordtPurchaseCopy.DataType = typeof(string);
+                    dtColumnCVCFordtPurchaseCopy.ColumnName = "CVC";
+                    dtPurchaseCopy.Columns.Add(dtColumnCVCFordtPurchaseCopy);
 
                     
                     #endregion

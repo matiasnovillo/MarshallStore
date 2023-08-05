@@ -13,7 +13,7 @@ using System;
  * 
  */
 
-//Last modification on: 31/07/2023 14:25:18
+//Last modification on: 03/08/2023 18:27:16
 
 namespace MarshallStore.Areas.MarshallStore.Filters
 {
@@ -21,7 +21,7 @@ namespace MarshallStore.Areas.MarshallStore.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 31/07/2023 14:25:18
+    /// Last modification: 03/08/2023 18:27:16
     /// </summary>
     public class PurchaseFilter : ActionFilterAttribute
     {
