@@ -63,11 +63,32 @@ namespace MarshallStore.Areas.MarshallStore.Services
         #region Non-Queries
         public int Insert(PurchaseModel PurchaseModel)
         {
-            //Delete ShoppingCart by UserCreationId
+            int NewPurchaseId = new PurchaseModel().Insert(PurchaseModel);
+
             ShoppingCartModel ShoppingCartModel = new ShoppingCartModel();
+
+            //Insert ProductId and PurchaseId in PurchaseProductModel
+            List<ShoppingCartModel> lstShoppingCartModel = ShoppingCartModel.SelectAllByUserCreationIdToList(PurchaseModel.UserCreationId);
+            foreach (ShoppingCartModel shoppingCartModel in lstShoppingCartModel)
+            {
+                PurchaseProductModel PurchaseProductModel = new PurchaseProductModel()
+                {
+                    Active = true,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    PurchaseId = NewPurchaseId,
+                    UserCreationId = PurchaseModel.UserCreationId,
+                    UserLastModificationId = PurchaseModel.UserCreationId,
+                    ProductId = shoppingCartModel.ProductId
+                };
+
+                PurchaseProductModel.Insert();
+            }
+
+            //Delete ShoppingCart by UserCreationId to show empty cart once the user made the purchase
             ShoppingCartModel.DeleteByUserCreationId(PurchaseModel.UserCreationId);
 
-            return new PurchaseModel().Insert(PurchaseModel);
+            return NewPurchaseId;
         }
 
         public int UpdateByPurchaseId(PurchaseModel PurchaseModel)
