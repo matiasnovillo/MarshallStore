@@ -49,45 +49,34 @@ class PurchaseProductQuery {
         </th>
         <th scope="col">
             <button value="PurchaseProductId" class="btn btn-outline-secondary btn-sm" type="button">
-                PurchaseProductId
+                PurchaseProduct ID
             </button>
         </th>
         <th scope="col">
-            <button value="Active" class="btn btn-outline-secondary btn-sm" type="button">
-                Active
+            <button class="btn btn-outline-secondary btn-sm" type="button">
+                First name
             </button>
         </th>
         <th scope="col">
-            <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+            <button class="btn btn-outline-secondary btn-sm" type="button">
+                Last name
             </button>
         </th>
         <th scope="col">
-            <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+            <button class="btn btn-outline-secondary btn-sm" type="button">
+                Email
             </button>
         </th>
         <th scope="col">
-            <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+            <button class="btn btn-outline-secondary btn-sm" type="button">
+                Phone
             </button>
         </th>
         <th scope="col">
-            <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+            <button class="btn btn-outline-secondary btn-sm" type="button">
+                Model
             </button>
         </th>
-        <th scope="col">
-            <button value="PurchaseId" class="btn btn-outline-secondary btn-sm" type="button">
-                PurchaseId
-            </button>
-        </th>
-        <th scope="col">
-            <button value="ProductId" class="btn btn-outline-secondary btn-sm" type="button">
-                ProductId
-            </button>
-        </th>
-        
         <th scope="col"></th>
     </tr>
 </thead>
@@ -164,37 +153,27 @@ class PurchaseProductQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+            ${row.FirstName}
         </strong>
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+            ${row.LastName}
         </strong>
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+            ${row.Email}
         </strong>
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-key"></i> ${row.UserCreationId}
+            ${row.Phone}
         </strong>
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-key"></i> ${row.UserLastModificationId}
-        </strong>
-    </td>
-    <td class="text-left">
-        <strong>
-            <i class="fas fa-key"></i> ${row.PurchaseId}
-        </strong>
-    </td>
-    <td class="text-left">
-        <strong>
-            <i class="fas fa-key"></i> ${row.ProductId}
+            ${row.Model}
         </strong>
     </td>
     
@@ -237,34 +216,25 @@ class PurchaseProductQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           Active <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+                           First name ${row.FirstName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Last name ${row.LastName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Email ${row.Email}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           UserCreationId <i class="fas fa-key"></i> ${row.UserCreationId}
+                           Phone ${row.Phone}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           UserLastModificationId <i class="fas fa-key"></i> ${row.UserLastModificationId}
+                           Model ${row.Model}
                         </span>
                         <br/>
-                        <span class="text-white mb-4">
-                           PurchaseId <i class="fas fa-key"></i> ${row.PurchaseId}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4">
-                           ProductId <i class="fas fa-key"></i> ${row.ProductId}
-                        </span>
-                        <br/>
-                        
                     </div>
                     <div class="col-auto">
                     </div>
@@ -449,7 +419,7 @@ function ValidateAndSearch() {
 }
 
 //LOAD EVENT
-if ($("#marshallstore-purchaseproduct-title-page").html().includes("Query purchaseproduct")) {
+if ($("#marshallstore-purchaseproduct-title-page").html().includes("Query purchased products")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;

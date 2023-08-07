@@ -27,7 +27,25 @@ export class PurchaseProductModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	PurchaseId?: number;
-	ProductId?: number;
+    ProductId?: number;
+    FullPrice?: number;
+    FirstName?: string | string[] | number | undefined;
+    LastName?: string | string[] | number | undefined;
+    Email?: string | string[] | number | undefined;
+    Phone?: string | string[] | number | undefined;
+    StreetAddress?: string | string[] | number | undefined;
+    PostCodeOrZip?: string | string[] | number | undefined;
+    City?: string | string[] | number | undefined;
+    Country?: string | string[] | number | undefined;
+    CardNumber?: string | string[] | number | undefined;
+    CardHolder?: string | string[] | number | undefined;
+    Expiration?: string | string[] | number | undefined;
+    CVC?: string | string[] | number | undefined;
+    Producer?: string | string[] | number | undefined;
+    Model?: string | string[] | number | undefined;
+    Price?: number;
+    Description?: string | string[] | number | undefined;
+    Image1?: string | string[] | number | undefined;
     
 
     //Queries

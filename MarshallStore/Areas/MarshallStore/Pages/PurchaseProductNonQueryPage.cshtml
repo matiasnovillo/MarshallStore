@@ -10,7 +10,24 @@
     int PurchaseProductId;
     int PurchaseId;
     int ProductId;
-    
+    string FirstName = "";
+    string LastName = "";
+    string Email = "";
+    string Phone = "";
+    string StreetAddress = "";
+    string PostCodeOrZip = "";
+    string City = "";
+    string Country = "";
+    string CardNumber = "";
+    string CardHolder = "";
+    string Expiration = "";
+    string CVC = "";
+    string Producer = "";
+    string Model = "";
+    decimal Price = 0;
+    string Description = "";
+    string Image1 = "";
+
 
     if(HttpContext.Request.QueryString.Value.Contains("?PurchaseProductId=0"))
     {
@@ -20,7 +37,24 @@
         PurchaseProductId = 0;
         PurchaseId = 0;
         ProductId = 0;
-        
+        FirstName = "";
+        LastName = "";
+        Email = "";
+        Phone = "";
+        StreetAddress = "";
+        PostCodeOrZip = "";
+        City = "";
+        Country = "";
+        CardNumber = "";
+        CardHolder = "";
+        Expiration = "";
+        CVC = "";
+        Producer = "";
+        Model = "";
+        Price = 0;
+        Description = "";
+        Image1 = "";
+
     }
     else
     {
@@ -33,7 +67,23 @@
         PurchaseProductId = PurchaseProductModel.PurchaseProductId;
         PurchaseId = PurchaseProductModel.PurchaseId;
         ProductId = PurchaseProductModel.ProductId;
-        
+        FirstName = PurchaseProductModel.FirstName;
+        LastName = PurchaseProductModel.LastName;
+        Email = PurchaseProductModel.Email;
+        Phone = PurchaseProductModel.Phone;
+        StreetAddress = PurchaseProductModel.StreetAddress;
+        PostCodeOrZip = PurchaseProductModel.PostCodeOrZip;
+        City = PurchaseProductModel.City;
+        Country = PurchaseProductModel.Country;
+        CardNumber = PurchaseProductModel.CardNumber;
+        CardHolder = PurchaseProductModel.CardHolder;
+        Expiration = PurchaseProductModel.Expiration;
+        CVC = PurchaseProductModel.CVC;
+        Producer = PurchaseProductModel.Producer;
+        Model = PurchaseProductModel.Model;
+        Price = PurchaseProductModel.Price;
+        Description = PurchaseProductModel.Description;
+        Image1 = PurchaseProductModel.Image1;
     }
 
 /*
@@ -60,8 +110,7 @@
                 <div class="col-lg-6 col-7">
                     <!-- Title -->
                     <h2 class="h2 text-white d-inline-block mb-0">
-                        @NonQueryText 
-                        purchaseproduct
+                        Purchased products
                     </h2>
                     <input type="hidden" 
                         id="marshallstore-purchaseproduct-purchaseproductid-input" 
@@ -81,7 +130,7 @@
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="javascript:void(0)">
-                                    PurchaseProduct
+                                    Purchased products
                                  </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -117,80 +166,128 @@
                 <!-- Card body -->
                 <div class="card-body">
                     <form class="needs-validation" novalidate>
-                        <!-- PurchaseId -->
-                            <div class="form-group mb-3">
-                                <label class="form-control-label">
-                                    <i class="fas fa-hashtag"></i> PurchaseId
-                                </label>
-                                <br/>
-                                <button type="button" 
-                                    class="btn btn-outline-primary border-0" 
-                                    data-toggle="modal" 
-                                    data-target="#modal-foreign-key-code-selector">
-                                        <i class="fas fa-hashtag"></i>
-                                </button>
-                                <ul id="marshallstore-purchaseproduct-purchaseid-list"
-                                    class="nav nav-pills nav-fill flex-column flex-sm-row" 
-                                    role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 active" 
-                                            data-toggle="tab" 
-                                            href="javascript:void(0)" 
-                                            role="tab" 
-                                            aria-controls="" 
-                                            aria-selected="true">
-                                                Choose a value
-                                        </a>
-                                        <input type="hidden" 
-                                            id="marshallstore-purchaseproduct-purchaseid-input"
-                                            value="@PurchaseId"/>
-                                    </li>
-                                </ul>
-                                <p class="text-danger text-sm">
-                                    <b>This value is required.</b>
-                                </p>
-                            </div>
-                        <!-- ProductId -->
-                            <div class="form-group mb-3">
-                                <label class="form-control-label">
-                                    <i class="fas fa-hashtag"></i> ProductId
-                                </label>
-                                <br/>
-                                <button type="button" 
-                                    class="btn btn-outline-primary border-0" 
-                                    data-toggle="modal" 
-                                    data-target="#modal-foreign-key-code-selector">
-                                        <i class="fas fa-hashtag"></i>
-                                </button>
-                                <ul id="marshallstore-purchaseproduct-productid-list"
-                                    class="nav nav-pills nav-fill flex-column flex-sm-row" 
-                                    role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 active" 
-                                            data-toggle="tab" 
-                                            href="javascript:void(0)" 
-                                            role="tab" 
-                                            aria-controls="" 
-                                            aria-selected="true">
-                                                Choose a value
-                                        </a>
-                                        <input type="hidden" 
-                                            id="marshallstore-purchaseproduct-productid-input"
-                                            value="@ProductId"/>
-                                    </li>
-                                </ul>
-                                <p class="text-danger text-sm">
-                                    <b>This value is required.</b>
-                                </p>
-                            </div>
-                        
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> First name
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@FirstName"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Last name
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@LastName"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Email
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Email"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Phone
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Phone"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Street address
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@StreetAddress"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Post code/Zip
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@PostCodeOrZip"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> City
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@City"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Country
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Country"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Producer
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Producer"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Model
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Model"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Price
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Price"
+                                readonly
+                                />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="marshallstore-product-producer-input" class="form-control-label">
+                                <i class="fas fa-font"></i> Description
+                            </label>
+                            <input class="form-control" 
+                                type="text" 
+                                value="@Description"
+                                readonly
+                                />
+                        </div>
                         <!-- Buttons -->
                         <div class="row justify-content-between">
-                            <button class="btn btn-primary text-nowrap ml-3 mt-4" 
-                                type="submit">
-                                    <i class="@NonQueryIcon"></i> 
-                                    @NonQueryText
-                            </button>
                             <a href="/MarshallStore/PurchaseProductQueryPage" 
                                 class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
                                     <i class="fas fa-angle-left"></i> 

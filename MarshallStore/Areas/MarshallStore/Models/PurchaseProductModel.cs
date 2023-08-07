@@ -75,10 +75,62 @@ namespace MarshallStore.Areas.MarshallStore.Models
 
         [Library.ModelAttributeValidator.Key("ProductId")]
         public int ProductId { get; set; }
+
+        [Library.ModelAttributeValidator.Decimal("FullPrice", false, 0D, 999999000.000000D)]
+        public decimal FullPrice { get; set; }
+
+        [Library.ModelAttributeValidator.String("FirstName", false, 1, 300, "")]
+        public string FirstName { get; set; }
+
+        [Library.ModelAttributeValidator.String("LastName", false, 1, 300, "")]
+        public string LastName { get; set; }
+
+        [Library.ModelAttributeValidator.String("Email", false, 1, 370, "")]
+        public string Email { get; set; }
+
+        [Library.ModelAttributeValidator.String("Phone", false, 1, 500, "")]
+        public string Phone { get; set; }
+
+        public string StreetAddress { get; set; }
+
+        [Library.ModelAttributeValidator.String("PostCodeOrZip", false, 1, 100, "")]
+        public string PostCodeOrZip { get; set; }
+
+        [Library.ModelAttributeValidator.String("City", false, 1, 300, "")]
+        public string City { get; set; }
+
+        [Library.ModelAttributeValidator.String("Country", false, 1, 300, "")]
+        public string Country { get; set; }
+
+        [Library.ModelAttributeValidator.String("CardNumber", false, 1, 50, "")]
+        public string CardNumber { get; set; }
+
+        [Library.ModelAttributeValidator.String("CardHolder", true, 1, 400, "")]
+        public string CardHolder { get; set; }
+
+        [Library.ModelAttributeValidator.String("Expiration", false, 1, 10, "")]
+        public string Expiration { get; set; }
+
+        [Library.ModelAttributeValidator.String("CVC", false, 1, 10, "")]
+        public string CVC { get; set; }
+
+        [Library.ModelAttributeValidator.String("Producer", false, 1, 300, "")]
+        public string Producer { get; set; }
+
+        [Library.ModelAttributeValidator.String("Model", false, 1, 300, "")]
+        public string Model { get; set; }
+
+        [Library.ModelAttributeValidator.Decimal("Price", false, 0D, 999999000.000000D)]
+        public decimal Price { get; set; }
+
+        public string Description { get; set; }
+
+        [Library.ModelAttributeValidator.String("Image1", false, 1, 8000, "")]
+        public string Image1 { get; set; }
         #endregion
 
         #region Sub-lists
-        
+
         #endregion
 
         #region Constructors
@@ -290,11 +342,11 @@ namespace MarshallStore.Areas.MarshallStore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.Select1ByPurchaseProductId]", dp, commandType: CommandType.StoredProcedure);
+                    lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.Select1ByPurchaseProductIdCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
         
                 if (lstPurchaseProductModel.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[MarshallStore.PurchaseProduct.Select1ByPurchaseProductId] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[MarshallStore.PurchaseProduct.Select1ByPurchaseProductIdCustom] returned more than one register/row"); }
 
                 foreach (PurchaseProductModel purchaseproduct in lstPurchaseProductModel)
                 {
@@ -306,6 +358,23 @@ namespace MarshallStore.Areas.MarshallStore.Models
 					PurchaseProductModel.UserLastModificationId = purchaseproduct.UserLastModificationId;
 					PurchaseProductModel.PurchaseId = purchaseproduct.PurchaseId;
 					PurchaseProductModel.ProductId = purchaseproduct.ProductId;
+					PurchaseProductModel.FirstName = purchaseproduct.FirstName;
+					PurchaseProductModel.LastName = purchaseproduct.LastName;
+					PurchaseProductModel.Email = purchaseproduct.Email;
+					PurchaseProductModel.Phone = purchaseproduct.Phone;
+					PurchaseProductModel.StreetAddress = purchaseproduct.StreetAddress;
+					PurchaseProductModel.PostCodeOrZip = purchaseproduct.PostCodeOrZip;
+					PurchaseProductModel.City = purchaseproduct.City;
+					PurchaseProductModel.Country = purchaseproduct.Country;
+					PurchaseProductModel.CardNumber = purchaseproduct.CardNumber;
+					PurchaseProductModel.CardHolder = purchaseproduct.CardHolder;
+					PurchaseProductModel.Expiration = purchaseproduct.Expiration;
+					PurchaseProductModel.CVC = purchaseproduct.CVC;
+					PurchaseProductModel.Producer = purchaseproduct.Producer;
+					PurchaseProductModel.Model = purchaseproduct.Model;
+					PurchaseProductModel.Price = purchaseproduct.Price;
+					PurchaseProductModel.Description = purchaseproduct.Description;
+					PurchaseProductModel.Image1 = purchaseproduct.Image1;
                 }
 
                 return PurchaseProductModel;
@@ -345,7 +414,7 @@ namespace MarshallStore.Areas.MarshallStore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    purchaseproductSelectAllPaged.lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    purchaseproductSelectAllPaged.lstPurchaseProductModel = (List<PurchaseProductModel>)sqlConnection.Query<PurchaseProductModel>("[dbo].[MarshallStore.PurchaseProduct.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     purchaseproductSelectAllPaged.TotalRows = dp.Get<int>("TotalRows");
                 }
 
