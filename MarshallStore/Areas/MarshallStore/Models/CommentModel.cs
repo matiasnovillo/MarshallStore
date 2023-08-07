@@ -312,6 +312,26 @@ namespace MarshallStore.Areas.MarshallStore.Models
             catch (Exception ex) { throw ex; }
         }
 
+        public List<CommentModel> SelectAllByProductIdToList(int ProductId)
+        {
+            try
+            {
+                CommentModel CommentModel = new CommentModel();
+                List<CommentModel> lstCommentModel = new List<CommentModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("ProductId", ProductId, DbType.Int32, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstCommentModel = (List<CommentModel>)sqlConnection.Query<CommentModel>("[dbo].[MarshallStore.Comment.SelectAllByProductIdCustom]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                return lstCommentModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         public List<CommentModel> SelectAllToList()
         {
             try

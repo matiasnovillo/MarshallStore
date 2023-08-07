@@ -113,6 +113,38 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
             }
         }
 
+        [HttpGet("~/api/MarshallStore/Comment/1/SelectAllByProductIdToJSON/{ProductId:int}")]
+        public List<CommentModel> SelectAllByProductIdToJSON(int ProductId)
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                return _IComment.SelectAllByProductIdToList(ProductId);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return null;
+            }
+        }
+
         [HttpPost("~/api/MarshallStore/Comment/1/SelectAllPagedToJSON")]
         public commentSelectAllPaged SelectAllPagedToJSON([FromBody] commentSelectAllPaged commentSelectAllPaged)
         {
@@ -148,8 +180,8 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
 
         #region Non-Queries
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/MarshallStore/Comment/1/InsertOrUpdateAsync")]
-        public async Task<IActionResult> InsertOrUpdateAsync()
+        [HttpPost("~/api/MarshallStore/Comment/1/Insert")]
+        public async Task<IActionResult> Insert()
         {
             try
             {
@@ -158,21 +190,21 @@ namespace MarshallStore.Areas.MarshallStore.Controllers
 
                 if(UserId == 0)
                 {
-                    return StatusCode(401, "User not found in session");
+                    return StatusCode(401, "You have to login first");
                 }
                 
                 #region Pass data from client to server
                 //CommentId
-                int CommentId = Convert.ToInt32(HttpContext.Request.Form["marshallstore-comment-commentid-input"]);
+                int CommentId = 0;
                 
                 int ProductId = 0; 
-                if (Convert.ToInt32(HttpContext.Request.Form["marshallstore-comment-productid-input"]) != 0)
+                if (Convert.ToInt32(HttpContext.Request.Form["ProductId"]) != 0)
                 {
-                    ProductId = Convert.ToInt32(HttpContext.Request.Form["marshallstore-comment-productid-input"]);
+                    ProductId = Convert.ToInt32(HttpContext.Request.Form["ProductId"]);
                 }
                 else
                 { return StatusCode(400, "It's not allowed to save zero values in ProductId"); }
-                string Text = HttpContext.Request.Form["marshallstore-comment-text-input"];
+                string Text = HttpContext.Request.Form["Text"];
                 
                 #endregion
 

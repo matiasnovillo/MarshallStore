@@ -39,6 +39,8 @@ namespace MarshallStore.Areas.MarshallStore.Interfaces
 
         List<CommentModel> SelectAllToList();
 
+        List<CommentModel> SelectAllByProductIdToList(int ProductId);
+
         commentSelectAllPaged SelectAllPagedToModel(commentSelectAllPaged commentSelectAllPaged);
         #endregion
 

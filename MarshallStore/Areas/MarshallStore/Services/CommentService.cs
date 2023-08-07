@@ -49,6 +49,11 @@ namespace MarshallStore.Areas.MarshallStore.Services
             return new CommentModel().Select1ByCommentIdToModel(CommentId);
         }
 
+        public List<CommentModel> SelectAllByProductIdToList(int ProductId)
+        {
+            return new CommentModel().SelectAllByProductIdToList(ProductId);
+        }
+
         public List<CommentModel> SelectAllToList()
         {
             return new CommentModel().SelectAllToList();

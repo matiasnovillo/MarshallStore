@@ -27,11 +27,6 @@ namespace MarshallStore.Areas.MarshallStore.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -40,11 +35,6 @@ namespace MarshallStore.Areas.MarshallStore.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)

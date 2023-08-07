@@ -22,6 +22,10 @@ var CommentModel = /** @class */ (function () {
         var URL = "/api/MarshallStore/Comment/1/Select1ByCommentIdToJSON/" + CommentId;
         return Rx.from((0, ajax_1.ajax)(URL));
     };
+    CommentModel.SelectAllByProductId = function (ProductId) {
+        var URL = "/api/MarshallStore/Comment/1/SelectAllByProductIdToJSON/" + ProductId;
+        return Rx.from((0, ajax_1.ajax)(URL));
+    };
     CommentModel.SelectAll = function () {
         var URL = "/api/MarshallStore/Comment/1/SelectAllToJSON";
         return Rx.from((0, ajax_1.ajax)(URL));

@@ -95,7 +95,7 @@
          pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"],
 
          commenttsmodel: ["./wwwroot/ts/MarshallStore/Comment/TsModels/Comment_TsModel"],  //Area: MarshallStore
-         commentjquery: ["./wwwroot/ts/MarshallStore/Comment/jQuery/CommentQuery_jQuery"],
+         commentcustomjquery: ["./wwwroot/ts/MarshallStore/Comment/jQuery/CommentQueryCustom_jQuery"],
          commentselectallpaged: ["./wwwroot/ts/MarshallStore/Comment/DTOs/commentSelectAllPaged"],
          producttsmodel: ["./wwwroot/ts/MarshallStore/Product/TsModels/Product_TsModel"],
          productjquery: ["./wwwroot/ts/MarshallStore/Product/jQuery/ProductQuery_jQuery"],

@@ -36,6 +36,11 @@ export class CommentModel {
         return Rx.from(ajax(URL));
     }
 
+    static SelectAllByProductId(ProductId: number) {
+        let URL = "/api/MarshallStore/Comment/1/SelectAllByProductIdToJSON/" + ProductId;
+        return Rx.from(ajax(URL));
+    }
+
     static SelectAll() {
         let URL = "/api/MarshallStore/Comment/1/SelectAllToJSON"
         return Rx.from(ajax(URL));
