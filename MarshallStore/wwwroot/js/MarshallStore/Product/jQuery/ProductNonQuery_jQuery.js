@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 01/08/2023 19:39:02
+//Last modification on: 08/08/2023 10:18:38
 
 //Create a formdata object
 var formData = new FormData();
@@ -50,14 +50,7 @@ $("#marshallstore-product-image3-input").on("change", function (e) {
 
 //LOAD EVENT
 $(document).ready(function () {
-    $("#marshallstore-product-productcategoryid-select").on("change", function (e) {
-        $("#marshallstore-product-productcategoryid-list").html(`<li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                ${$("#marshallstore-product-productcategoryid-select option:selected").text()}
-            </a>
-            <input type="hidden" id="marshallstore-product-productcategoryid-input" value="${$("#marshallstore-product-productcategoryid-select option:selected").val()}"/>
-        </li>`);
-    });
+    
     
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.getElementsByClassName("needs-validation");
@@ -104,6 +97,23 @@ $(document).ready(function () {
                     }
                     else {
                         //SUCCESS
+                        window.location.replace("/MarshallStore/ProductQueryPage");
+                    }
+                };
+                //Open connection
+                xmlHttpRequest.open("POST", "/api/MarshallStore/Product/1/InsertOrUpdateAsync", true);
+                //Send request
+                xmlHttpRequest.send(formData);
+            }
+            else {
+                $.notify({ message: "Please, complete all fields." }, { type: "warning", placement: { from: "bottom", align: "center" } });
+            }
+
+
+            form.classList.add("was-validated");
+        }, false);
+    });
+});                  //SUCCESS
                         window.location.replace("/MarshallStore/ProductQueryPage");
                     }
                 };

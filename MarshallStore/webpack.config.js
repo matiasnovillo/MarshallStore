@@ -99,6 +99,7 @@
          commentselectallpaged: ["./wwwroot/ts/MarshallStore/Comment/DTOs/commentSelectAllPaged"],
          producttsmodel: ["./wwwroot/ts/MarshallStore/Product/TsModels/Product_TsModel"],
          productjquery: ["./wwwroot/ts/MarshallStore/Product/jQuery/ProductQuery_jQuery"],
+         productcustomjquery: ["./wwwroot/ts/MarshallStore/Product/jQuery/ProductCustomQuery_jQuery"],
          productselectallpaged: ["./wwwroot/ts/MarshallStore/Product/DTOs/productSelectAllPaged"],
          productcategorytsmodel: ["./wwwroot/ts/MarshallStore/ProductCategory/TsModels/ProductCategory_TsModel"],
          productcategoryjquery: ["./wwwroot/ts/MarshallStore/ProductCategory/jQuery/ProductCategoryQuery_jQuery"],

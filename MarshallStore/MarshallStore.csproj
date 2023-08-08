@@ -32,6 +32,7 @@
     <Folder Include="wwwroot\icons\" />
     <Folder Include="wwwroot\PDFFiles\" />
     <Folder Include="wwwroot\Uploads\Examples\Example\" />
+    <Folder Include="wwwroot\Uploads\MarshallStore\Product\" />
     <Folder Include="wwwroot\Uploads\Requirement\RequirementFile\" />
   </ItemGroup>
 
