@@ -97,7 +97,6 @@ namespace MarshallStore.Areas.MarshallStore.Models
         #region Sub-lists
         public virtual List<PurchaseProductModel> lstPurchaseProductModel { get; set; } //Foreign Key name: ProductId 
 		public virtual List<ShoppingCartModel> lstShoppingCartModel { get; set; } //Foreign Key name: ProductId 
-		public virtual List<RateModel> lstRateModel { get; set; } //Foreign Key name: ProductId 
 		public virtual List<CommentModel> lstCommentModel { get; set; } //Foreign Key name: ProductId 
         #endregion
 
@@ -119,7 +118,6 @@ namespace MarshallStore.Areas.MarshallStore.Models
                 //Initialize sub-lists
                 lstPurchaseProductModel = new List<PurchaseProductModel>();
                 lstShoppingCartModel = new List<ShoppingCartModel>();
-                lstRateModel = new List<RateModel>();
                 lstCommentModel = new List<CommentModel>();
                 
             }
@@ -142,7 +140,6 @@ namespace MarshallStore.Areas.MarshallStore.Models
                 //Initialize sub-lists
                 lstPurchaseProductModel = new List<PurchaseProductModel>();
                 lstShoppingCartModel = new List<ShoppingCartModel>();
-                lstRateModel = new List<RateModel>();
                 lstCommentModel = new List<CommentModel>();
                 
                 
@@ -197,7 +194,6 @@ namespace MarshallStore.Areas.MarshallStore.Models
                 //Initialize sub-lists
                 lstPurchaseProductModel = new List<PurchaseProductModel>();
                 lstShoppingCartModel = new List<ShoppingCartModel>();
-                lstRateModel = new List<RateModel>();
                 lstCommentModel = new List<CommentModel>();
                 
 
@@ -233,7 +229,6 @@ namespace MarshallStore.Areas.MarshallStore.Models
                 //Initialize sub-lists
                 lstPurchaseProductModel = new List<PurchaseProductModel>();
                 lstShoppingCartModel = new List<ShoppingCartModel>();
-                lstRateModel = new List<RateModel>();
                 lstCommentModel = new List<CommentModel>();
                 
 

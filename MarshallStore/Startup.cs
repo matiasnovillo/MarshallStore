@@ -64,7 +64,6 @@ namespace MarshallStore
             services.AddScoped<IProduct, ProductService>();
             services.AddScoped<IProductCategory, ProductCategoryService>();
             services.AddScoped<IShoppingCart, ShoppingCartService>();
-            services.AddScoped<IRate, RateService>();
             services.AddScoped<IComment, CommentService>();
             services.AddScoped<IPurchase, PurchaseService>();
             services.AddScoped<IPurchaseProduct, PurchaseProductService>();
